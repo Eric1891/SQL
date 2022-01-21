@@ -11,19 +11,21 @@
 -- 1. Find the total number of purchases.
 select count(*) from purchases;
 -- 2. Find the average price of the items in the products table.
-select avg(price) from purchase_items;
+select avg(price) from products;
 -- 3. Find the maximum price from the products that are NOT a
 --    computer.
-select max(price) from products  where title!='computer';
+select max(price) from products  where title not ilike '% computer';
 -- 4. Find the number of users with Gmail email addresses.
 
 select count(*) from users where email like '%gmail.com'
 -- 5. Using the purchase_items table, find the total dollar value of
 --    all items with state "Returned".
 select sum(price) from purchase_items where status='Returned';
+select sum(price * quantity) from purchase_items where status='Returned';
+
 -- 6. Find the average price of all products containing the word
 --    "Book" in their title.
-select avg(price) from products where title like '%Book%';
+select avg(price) from products where title ilike '% Book';
 ----------------------------------------
 -- EXTRA CREDIT: If you finish early. --
 ----------------------------------------
